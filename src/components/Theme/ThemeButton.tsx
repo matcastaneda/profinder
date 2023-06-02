@@ -12,17 +12,14 @@ const ThemeButton: React.FC<ThemeButtonProps> = ({ themeList }) => {
 
   return (
     <Menu.Button
-      className="inline-flex space-x-4 items-center w-full justify-center rounded-md bg-black bg-opacity-20 px-4 py-3 text-sm font-medium text-white hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
+      className="inline-flex space-x-4 items-center w-full justify-center rounded-md bg-slate-200/60 md:hover:bg-slate-200/80 dark:bg-slate-950/30 dark:md:hover:bg-slate-950/50 px-4 py-3 text-sm font-medium focus:outline-none"
       aria-hidden="true">
       <div className="flex items-center space-x-1">
         <span>{themeList.find(item => item.theme === theme)?.icon}</span>
         <span>{themeList.find(item => item.theme === theme)?.label}</span>
       </div>
 
-      <TbChevronDown
-        aria-hidden="true"
-        className="w-5 h-5 -mr-2 text-violet-200 hover:text-violet-100"
-      />
+      <TbChevronDown aria-hidden="true" className="w-5 h-5 -mr-2 opacity-40" />
     </Menu.Button>
   );
 };

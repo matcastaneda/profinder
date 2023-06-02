@@ -27,7 +27,9 @@ const Theme = () => {
   ];
 
   return (
-    <Menu as={'section'} className="relative inline-block text-left ml-auto">
+    <Menu
+      as={'section'}
+      className="relative inline-block text-left ml-auto select-none">
       <ThemeButton themeList={themeList} />
 
       <Transition
@@ -38,8 +40,8 @@ const Theme = () => {
         leave="transition ease-in duration-75"
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95">
-        <Menu.Items className="absolute right-0 mt-2 w-36 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-          <ul className="p-2">
+        <Menu.Items className="absolute right-0 mt-2 w-40 origin-top-right divide-y divide-gray-100 rounded-md bg-slate-200/60 dark:bg-slate-950/30 focus:outline-none">
+          <ul className="p-2 space-y-1">
             {themeList.map(selectedTheme => (
               <ThemeItem
                 key={selectedTheme.theme}
