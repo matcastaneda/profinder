@@ -1,0 +1,13 @@
+/node_modules
+.git
+.gitignore
+build 
+dist
+coverage
+
+# IDE
+.idea
+.vscode
+
+tsconfig.json
+tslint.json
