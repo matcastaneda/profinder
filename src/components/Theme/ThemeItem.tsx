@@ -12,20 +12,15 @@ const ThemeItem: React.FC<ThemeItemProps> = ({ themeItem }) => {
   const { theme, icon, label } = themeItem;
 
   return (
-    <Listbox.Option
-      key={theme}
-      value={theme}
-      className={({ active, selected }) =>
-        clsx(
-          'group cursor-pointer flex items-center rounded-md w-full p-2 text-sm font-medium divide-transparent focus:outline-none',
-          active && 'bg-slate-200/80 dark:bg-slate-950/50',
-          selected
-            ? 'text-sky-500 cursor-auto pointer-events-none'
-            : 'md:hover:bg-slate-200 dark:md:hover:bg-slate-950/50',
-        )
-      }>
+    <Listbox.Option as={React.Fragment} value={theme}>
       {({ selected }) => (
-        <>
+        <li
+          className={clsx(
+            'group cursor-pointer flex items-center rounded-md w-full p-2 text-sm font-medium divide-transparent focus:outline-none',
+            selected
+              ? 'text-sky-500 cursor-auto pointer-events-none'
+              : 'md:hover:bg-slate-200 dark:md:hover:bg-slate-950/50',
+          )}>
           <div className="flex items-center space-x-2">
             <span>{icon}</span>
             <span>{label}</span>
@@ -34,7 +29,7 @@ const ThemeItem: React.FC<ThemeItemProps> = ({ themeItem }) => {
           {selected ? (
             <TbCheck aria-hidden="true" className="w-4 h-4 ml-auto" />
           ) : null}
-        </>
+        </li>
       )}
     </Listbox.Option>
   );
