@@ -1,26 +1,37 @@
-import { Menu } from '@headlessui/react';
+import { Listbox } from '@headlessui/react';
+import clsx from 'clsx';
 import { TbChevronDown } from 'react-icons/tb';
-import { useThemeStore } from 'store/theme';
-import { type ThemeItemInterface } from 'types';
+import { type ThemeType, type ThemeItemInterface } from 'types';
 
 interface ThemeButtonProps {
   themeList: ThemeItemInterface[];
+  theme: ThemeType;
 }
 
-const ThemeButton: React.FC<ThemeButtonProps> = ({ themeList }) => {
-  const theme = useThemeStore(state => state.theme);
-
+const ThemeButton: React.FC<ThemeButtonProps> = ({ themeList, theme }) => {
   return (
-    <Menu.Button
-      className="inline-flex space-x-4 items-center w-full justify-center rounded-md bg-slate-200/60 md:hover:bg-slate-200/80 dark:bg-slate-950/30 dark:md:hover:bg-slate-950/50 px-4 py-3 text-sm font-medium focus:outline-none"
-      aria-hidden="true">
-      <div className="flex items-center space-x-1">
-        <span>{themeList.find(item => item.theme === theme)?.icon}</span>
-        <span>{themeList.find(item => item.theme === theme)?.label}</span>
-      </div>
+    <Listbox.Button aria-hidden="true">
+      {({ open }) => (
+        <div
+          className={clsx(
+            'inline-flex space-x-4 items-center w-full justify-center rounded-md bg-slate-200/60 md:hover:bg-slate-200/80 dark:bg-slate-950/30 dark:md:hover:bg-slate-950/50 px-4 py-3 text-sm font-medium focus:outline-none',
+            open && 'bg-slate-200/80 dark:bg-slate-950/50',
+          )}>
+          <div className="flex items-center space-x-1">
+            {themeList.find(item => item.theme === theme)?.icon}
+            <p>{themeList.find(item => item.theme === theme)?.label}</p>
+          </div>
 
-      <TbChevronDown aria-hidden="true" className="w-5 h-5 -mr-2 opacity-40" />
-    </Menu.Button>
+          <TbChevronDown
+            aria-hidden="true"
+            className={clsx(
+              'w-4 h-4 transition-transform duration-200',
+              open && 'transform rotate-180',
+            )}
+          />
+        </div>
+      )}
+    </Listbox.Button>
   );
 };
 

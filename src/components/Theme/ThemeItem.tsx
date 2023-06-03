@@ -1,38 +1,42 @@
 import React from 'react';
-import { Menu } from '@headlessui/react';
+import { Listbox } from '@headlessui/react';
 import { TbCheck } from 'react-icons/tb';
 import clsx from 'clsx';
-import { useThemeStore } from 'store/theme';
 import { type ThemeItemInterface } from 'types';
 
 interface ThemeItemProps {
-  selectedTheme: ThemeItemInterface;
+  themeItem: ThemeItemInterface;
 }
 
-const ThemeItem: React.FC<ThemeItemProps> = ({ selectedTheme }) => {
-  const theme = useThemeStore(state => state.theme);
-  const setTheme = useThemeStore(state => state.setTheme);
+const ThemeItem: React.FC<ThemeItemProps> = ({ themeItem }) => {
+  const { theme, icon, label } = themeItem;
 
   return (
-    <Menu.Item as={React.Fragment}>
-      <li
-        className={clsx(
-          'group cursor-pointer flex items-center rounded-md w-full p-2 text-sm font-medium',
-          selectedTheme.theme === theme
+    <Listbox.Option
+      key={theme}
+      value={theme}
+      className={({ active, selected }) =>
+        clsx(
+          'group cursor-pointer flex items-center rounded-md w-full p-2 text-sm font-medium divide-transparent focus:outline-none',
+          active && 'bg-slate-200/80 dark:bg-slate-950/50',
+          selected
             ? 'text-sky-500 cursor-auto pointer-events-none'
             : 'md:hover:bg-slate-200 dark:md:hover:bg-slate-950/50',
-        )}
-        onClick={() => setTheme(selectedTheme.theme)}>
-        <div className="flex items-center space-x-2">
-          <span>{selectedTheme.icon}</span>
-          <span>{selectedTheme.label}</span>
-        </div>
+        )
+      }>
+      {({ selected }) => (
+        <>
+          <div className="flex items-center space-x-2">
+            <span>{icon}</span>
+            <span>{label}</span>
+          </div>
 
-        {selectedTheme.theme === theme ? (
-          <TbCheck aria-hidden="true" className="w-4 h-4 ml-auto" />
-        ) : null}
-      </li>
-    </Menu.Item>
+          {selected ? (
+            <TbCheck aria-hidden="true" className="w-4 h-4 ml-auto" />
+          ) : null}
+        </>
+      )}
+    </Listbox.Option>
   );
 };
 
