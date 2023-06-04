@@ -1,0 +1,6 @@
+@import './base.css';
+
+@import './utilities.css';
+
+/* Import nprogress styles */
+@import 'nprogress/nprogress.css';
