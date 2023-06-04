@@ -1,10 +1,8 @@
 @tailwind base;
-@tailwind components;
-@tailwind utilities;
 
 *,
-*:before,
-*:after {
+*::before,
+*::after {
   box-sizing: inherit;
 }
 
@@ -16,7 +14,7 @@ html {
   height: 100%;
   box-sizing: border-box;
   touch-action: manipulation;
-  font-feature-settings: 'case' 1, 'rlig' 1, 'calt' 0;
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
 }
 
 html,
@@ -31,4 +29,8 @@ body {
   min-height: 100%;
   margin: 0;
   @apply font-poppins bg-slate-50 dark:bg-[#141C2F] text-base text-slate-600 dark:text-slate-300 leading-6 w-full min-w-[320px] scroll-smooth p-5 md:p-7;
+}
+
+strong {
+  @apply text-sky-500;
 }
