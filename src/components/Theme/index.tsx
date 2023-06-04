@@ -10,7 +10,7 @@ const Theme = () => {
   const [theme, setTheme] = useTheme();
 
   return (
-    <section className="relative inline-block text-left ml-auto select-none">
+    <section className="relative inline-block text-left select-none">
       <Listbox as={React.Fragment} value={theme} onChange={setTheme}>
         <ThemeButton themeList={themeList} theme={theme as ThemeType} />
 
@@ -24,7 +24,7 @@ const Theme = () => {
           leaveTo="transform opacity-0 scale-95">
           <Listbox.Options
             as={'div'}
-            className="absolute right-0 mt-2 w-40 origin-top-right rounded-md bg-slate-200/60 dark:bg-slate-950/30 focus:outline-none">
+            className="absolute z-50 right-0 mt-2 w-40 origin-top-right shadow-md rounded-md bg-slate-100 dark:bg-slate-900 focus:outline-none">
             <ul className="p-2 space-y-1">
               {themeList.map(item => (
                 <ThemeItem key={item.theme} themeItem={{ ...item }} />
