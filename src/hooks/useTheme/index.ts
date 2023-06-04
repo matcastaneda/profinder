@@ -1,16 +1,13 @@
-import { useEffect, useRef } from 'react';
-import { useThemeStore } from 'store/theme';
+import { useEffect, useRef, useState } from 'react';
 import { useIsomorphicLayoutEffect } from 'hooks/useIsomorphicLayoutEffect';
 import { updateThemeConfig } from 'utils/updateThemeConfig';
-import { ThemeType } from 'types';
+import { type ThemeType } from 'types';
 
 export const useTheme = () => {
   const initialRef = useRef(true);
+  const [theme, setTheme] = useState<ThemeType | null>(null);
+
   const storagedTheme = localStorage.getItem('theme') as ThemeType;
-  const { theme, setTheme } = useThemeStore(state => ({
-    theme: state.theme,
-    setTheme: state.setTheme,
-  }));
 
   useIsomorphicLayoutEffect(() => {
     if (storagedTheme === 'light' || storagedTheme === 'dark') {
