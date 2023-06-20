@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import { IconType } from 'react-icons';
 import { TbSearch } from 'react-icons/tb';
 import { useUserStore } from 'store/user';
-import Icon from 'components/Icon';
+import CustomIcon from 'components/CustomIcon';
 
 const LoadingIcon: IconType = ({ ...props }) => (
   <svg
@@ -62,7 +62,7 @@ const Search = () => {
       <form
         onSubmit={handleSubmit}
         className="group relative flex justify-between items-center p-2">
-        <Icon
+        <CustomIcon
           icon={TbSearch}
           className="absolute w-6 h-6 left-3.5 -mt-0.5 text-slate-400/60 dark:text-slate-100/60 pointer-events-none group-focus-within:text-sky-500 cursor-auto"
         />
@@ -84,7 +84,7 @@ const Search = () => {
               : 'active:clickable',
           )}
           disabled={!value || loading}>
-          {loading ? <Icon icon={LoadingIcon} /> : 'Search'}
+          {loading ? <CustomIcon icon={LoadingIcon} /> : 'Search'}
         </button>
       </form>
     </section>

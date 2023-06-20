@@ -1,7 +1,7 @@
 import { IoLogoGithub } from 'react-icons/io';
 import Theme from 'components/Theme';
 import ViewLogo from 'components/ViewLogo';
-import Icon from 'components/Icon';
+import CustomIcon from 'components/CustomIcon';
 import Search from 'components/Search';
 
 const ViewHeader = () => {
@@ -14,7 +14,11 @@ const ViewHeader = () => {
 
         <div className="flex items-center ml-auto space-x-3">
           <Theme />
-          <Icon icon={IoLogoGithub} anchorLink anchorLinkHref={ProjectUrl} />
+          <CustomIcon
+            icon={IoLogoGithub}
+            anchorLink
+            anchorLinkHref={ProjectUrl}
+          />
         </div>
       </section>
 
