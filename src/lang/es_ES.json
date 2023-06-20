@@ -1,0 +1,17 @@
+{
+  "app.header.theme.light": "Claro",
+  "app.header.theme.dark": "Oscuro",
+  "app.header.theme.system": "Sistema",
+  "app.header.lang.en": "Inglés",
+  "app.header.lang.es": "Español",
+  "app.modal.button-save": "Guardar",
+  "app.modal.button-close": "Cerrar",
+  "app.modal.preferences-title": "Preferencias",
+  "app.modal.preferences-label.theme": "Tema",
+  "app.modal.preferences-label.theme-toast-success": "El tema se ha cambiado a {theme}",
+  "app.modal.preferences-label.language": "Idioma",
+  "app.modal.preferences-label.language-toast-success": "El idioma se ha cambiado a {lang}",
+  "app.modal.preferences-content": "Elige el tema y el idioma de la página.",
+  "app.main.search.placeholder": "Busca tu perfil de GitHub",
+  "app.main.search.button": "Buscar"
+}

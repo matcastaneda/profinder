@@ -4,6 +4,7 @@ import { IconType } from 'react-icons';
 import { TbSearch } from 'react-icons/tb';
 import { useUserStore } from 'store/user';
 import CustomIcon from 'components/CustomIcon';
+import IntlMessage from 'components/IntlMessage';
 
 const LoadingIcon: IconType = ({ ...props }) => (
   <svg
@@ -68,9 +69,8 @@ const Search = () => {
         />
         <input
           type="text"
-          placeholder="Search github username"
-          autoComplete="off"
-          autoFocus={true}
+          placeholder={IntlMessage({ id: 'app.main.search.placeholder' })}
+          autoCapitalize="off"
           onChange={handleChange}
           ref={searchRef}
           className="appearance-none w-full bg-transparent py-2 pl-10 md:pl-12 focus:outline-none focus:right-0"
@@ -84,7 +84,11 @@ const Search = () => {
               : 'active:clickable',
           )}
           disabled={!value || loading}>
-          {loading ? <CustomIcon icon={LoadingIcon} /> : 'Search'}
+          {loading ? (
+            <CustomIcon icon={LoadingIcon} />
+          ) : (
+            IntlMessage({ id: 'app.main.search.button' })
+          )}
         </button>
       </form>
     </section>

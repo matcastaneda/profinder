@@ -1,13 +1,33 @@
 import React from 'react';
 import { Listbox, Transition } from '@headlessui/react';
-import { useTheme } from 'hooks/useTheme';
+import { HiMoon, HiSun } from 'react-icons/hi';
+import { MdMonitor } from 'react-icons/md';
 import ThemeButton from './ThemeButton';
 import ThemeItem from './ThemeItem';
-import { themeList } from 'utils/lists/themeList';
-import { type ThemeType } from 'types';
+import IntlMessage from 'components/IntlMessage';
+import { ThemeItemInterface, type ThemeType } from 'types';
+import { useThemeContext } from 'providers/theme/themeContext';
 
-const Theme = () => {
-  const [theme, setTheme] = useTheme();
+const ThemeSelect = () => {
+  const { theme, setTheme } = useThemeContext();
+
+  const themeList: ThemeItemInterface[] = [
+    {
+      label: IntlMessage({ id: 'app.header.theme.light' }),
+      icon: <HiSun className="w-5 h-5" />,
+      theme: 'light',
+    },
+    {
+      label: IntlMessage({ id: 'app.header.theme.dark' }),
+      icon: <HiMoon className="w-5 h-5" />,
+      theme: 'dark',
+    },
+    {
+      label: IntlMessage({ id: 'app.header.theme.system' }),
+      icon: <MdMonitor className="w-5 h-5" />,
+      theme: 'system',
+    },
+  ];
 
   return (
     <section className="relative inline-block text-left select-none">
@@ -37,4 +57,4 @@ const Theme = () => {
   );
 };
 
-export default Theme;
+export default ThemeSelect;
