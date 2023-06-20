@@ -1,9 +1,15 @@
-import { ThemeEnum } from './utils/enums/theme';
-
 export type ThemeType = 'light' | 'dark' | 'system';
 
 export interface ThemeItemInterface {
-  label: ThemeEnum;
+  label: string;
   icon: JSX.Element;
   theme: ThemeType;
+}
+
+export type LanguageType = 'en' | 'es';
+
+export interface LanguageList {
+  name: string;
+  code: LanguageType;
+  image: string;
 }

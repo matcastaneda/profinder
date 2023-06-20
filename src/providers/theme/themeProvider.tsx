@@ -2,8 +2,9 @@ import { useEffect, useRef, useState } from 'react';
 import { useIsomorphicLayoutEffect } from 'hooks/useIsomorphicLayoutEffect';
 import { updateThemeConfig } from 'utils/updateThemeConfig';
 import { type ThemeType } from 'types';
+import { ThemeContext } from './themeContext';
 
-export const useTheme = () => {
+const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   const initialRef = useRef(true);
   const [theme, setTheme] = useState<ThemeType | null>(null);
 
@@ -61,5 +62,11 @@ export const useTheme = () => {
     };
   }, [setTheme, storagedTheme]);
 
-  return [theme, setTheme] as const;
+  return (
+    <ThemeContext.Provider value={{ theme, setTheme }}>
+      {children}
+    </ThemeContext.Provider>
+  );
 };
+
+export default ThemeProvider;

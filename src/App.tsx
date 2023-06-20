@@ -1,18 +1,21 @@
 import './css/main.css';
 
-import nprogress from 'nprogress';
+import { Toaster } from 'sonner';
+import LangProvider from 'providers/localeProvider';
+import ThemeProvider from 'providers/theme/themeProvider';
 import ViewHeader from 'components/ViewHeader';
 import NProgressWrapper from 'components/NProgressWrapper';
 
 const App = () => {
-  nprogress.configure({ showSpinner: false });
-
   return (
-    <>
-      <ViewHeader />
+    <LangProvider>
+      <ThemeProvider>
+        <ViewHeader />
 
-      <NProgressWrapper />
-    </>
+        <NProgressWrapper />
+        <Toaster richColors />
+      </ThemeProvider>
+    </LangProvider>
   );
 };
 
