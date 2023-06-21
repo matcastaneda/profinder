@@ -49,13 +49,11 @@ const Search = () => {
     e.preventDefault();
     if (!value) return;
 
-    setTimeout(() => {
-      setUsername(value);
-      setLoading(false);
-    }, 1000);
+    setUsername(value);
 
     setValue(null);
     e.currentTarget.reset();
+    setLoading(false);
   };
 
   return (

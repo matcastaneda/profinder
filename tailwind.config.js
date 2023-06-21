@@ -1,3 +1,5 @@
+import tailwindScrollbar from 'tailwind-scrollbar';
+
 /** @type {import('tailwindcss').Config} */
 export default {
   darkMode: 'class',
@@ -8,5 +10,5 @@ export default {
       poppins: ['Poppins', 'sans-serif'],
     },
   },
-  plugins: [],
+  plugins: [tailwindScrollbar()],
 };

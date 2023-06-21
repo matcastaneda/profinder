@@ -1,5 +1,9 @@
 @tailwind base;
 
+* {
+  @apply scrollbar-thin scrollbar-thumb-sky-500 scrollbar-track-gray-100  dark:scrollbar-thumb-sky-700 dark:scrollbar-track-gray-800;
+}
+
 *,
 *::before,
 *::after {

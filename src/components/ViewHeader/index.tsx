@@ -4,7 +4,7 @@ import ViewPrefences from 'components/ViewPreferences';
 
 const ViewHeader = () => {
   return (
-    <header className="space-y-10 mx-auto max-w-4xl">
+    <header className="space-y-8 mx-auto max-w-5xl">
       <section className="flex items-center">
         <ViewLogo />
         <ViewPrefences />
