@@ -1,3 +1,5 @@
+import IntlMessage from 'components/IntlMessage';
+import { FormattedMessage } from 'react-intl';
 import { MAX_COUNT_TO_SHOW } from 'setup';
 
 interface GithubURLProps {
@@ -6,13 +8,16 @@ interface GithubURLProps {
   url: string;
 }
 
-const GithubURL = ({ dataType, count, url }: GithubURLProps) => {
-  const userCount = count === 1 ? `${dataType}` : `${dataType}s`;
-
+const GithubURL = ({ count, url }: GithubURLProps) => {
   const hasMany =
-    count > 1
-      ? `See the other ${count - MAX_COUNT_TO_SHOW} ${dataType}s in github`
-      : `See the other ${userCount} in github`;
+    count > 1 ? (
+      <FormattedMessage
+        id="app.main.metrics.view-all"
+        values={{ count: count - MAX_COUNT_TO_SHOW }}
+      />
+    ) : (
+      <FormattedMessage id="app.main.metrics.view-one" />
+    );
 
   return (
     <a

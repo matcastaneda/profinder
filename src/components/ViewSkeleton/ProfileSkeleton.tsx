@@ -15,7 +15,6 @@ const ProfileSkeleton = () => {
           <div className="flex flex-col space-y-2">
             <div className="h-4 rounded bg-slate-700"></div>
             <div className="h-4 rounded bg-slate-700"></div>
-            <div className="h-4 rounded bg-slate-700"></div>
           </div>
 
           <div className="h-4 mx-auto w-28 rounded bg-slate-700"></div>

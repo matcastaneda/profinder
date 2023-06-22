@@ -13,5 +13,15 @@
   "app.modal.preferences-label.language-toast-success": "El idioma se ha cambiado a {lang}",
   "app.modal.preferences-content": "Elige el tema y el idioma de la página.",
   "app.main.search.placeholder": "Busca tu perfil de GitHub",
-  "app.main.search.button": "Buscar"
+  "app.main.search.button": "Buscar",
+  "app.main.followers": "Seguidores",
+  "app.main.following": "Seguidos",
+  "app.main.user": "Usuario",
+  "app.main.organization": "Organización",
+  "app.main.metrics.title-my": "Mis",
+  "app.main.followers.title": "Seguidores",
+  "app.main.following.title": "Seguidos",
+  "app.main.metrics.shown": "Mostrados",
+  "app.main.metrics.view-all": "Ver los otros {count} en GitHub",
+  "app.main.metrics.view-one": "Ver el otro en GitHub"
 }

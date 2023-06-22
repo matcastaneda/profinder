@@ -1,3 +1,4 @@
+import IntlMessage from 'components/IntlMessage';
 import { type Metrics } from 'types';
 import { formattedNumber } from 'utils/formattedNumber';
 
@@ -5,8 +6,14 @@ const ViewMetrics = (metrics: Metrics) => {
   const metricList = [
     { name: 'Repos', value: metrics.public_repos },
     { name: 'Gists', value: metrics.public_gists },
-    { name: 'Followers', value: metrics.followers },
-    { name: 'Following', value: metrics.following },
+    {
+      name: IntlMessage({ id: 'app.main.followers' }),
+      value: metrics.followers,
+    },
+    {
+      name: IntlMessage({ id: 'app.main.following' }),
+      value: metrics.following,
+    },
   ];
 
   return (
