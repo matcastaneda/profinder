@@ -4,6 +4,7 @@ import Tabtitle from './TabTitle';
 import clsx from 'clsx';
 import ViewLoader from 'components/ViewLoader';
 import { useUserStore } from 'store/user';
+import IntlMessage from 'components/IntlMessage';
 
 const ViewRepos = lazy(() => import('../ViewMain/ViewRepos'));
 const ViewGists = lazy(() => import('../ViewMain/ViewGists'));
@@ -22,22 +23,34 @@ const Tabs = () => {
   const tabList = [
     {
       name: 'Repos',
-      title: <Tabtitle normalText="My" strongText="Repos" total={reposCount} />,
+      title: (
+        <Tabtitle
+          normalText={IntlMessage({ id: 'app.main.metrics.title-my' })}
+          strongText="Repos"
+          total={reposCount}
+        />
+      ),
       component: <ViewRepos />,
       loader: <ViewLoader />,
     },
     {
       name: 'Gists',
-      title: <Tabtitle normalText="My" strongText="Gists" total={gistsCount} />,
+      title: (
+        <Tabtitle
+          normalText={IntlMessage({ id: 'app.main.metrics.title-my' })}
+          strongText="Gists"
+          total={gistsCount}
+        />
+      ),
       component: <ViewGists />,
       loader: <ViewLoader />,
     },
     {
-      name: 'Followers',
+      name: IntlMessage({ id: 'app.main.followers' }),
       title: (
         <Tabtitle
-          normalText="My"
-          strongText="Followers"
+          normalText={IntlMessage({ id: 'app.main.metrics.title-my' })}
+          strongText={IntlMessage({ id: 'app.main.followers.title' })}
           total={followersCount}
         />
       ),
@@ -45,11 +58,11 @@ const Tabs = () => {
       loader: <ViewLoader />,
     },
     {
-      name: 'Following',
+      name: IntlMessage({ id: 'app.main.following' }),
       title: (
         <Tabtitle
-          normalText="My"
-          strongText="Following"
+          normalText={IntlMessage({ id: 'app.main.metrics.title-my' })}
+          strongText={IntlMessage({ id: 'app.main.following.title' })}
           total={followingCount}
         />
       ),

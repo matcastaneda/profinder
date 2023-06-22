@@ -6,6 +6,7 @@ import { useUserStore } from 'store/user';
 import { UserResponse } from 'types';
 import ProfileSkeleton from 'components/ViewSkeleton/ProfileSkeleton';
 import Tabs from 'components/Tabs';
+import ViewUserNotFound from 'components/ViewUserNotFound';
 
 const ViewProfile = lazy(() => import('./ViewProfile'));
 
@@ -16,7 +17,6 @@ const ViewMain = () => {
     data: profile,
     isLoading,
     isError,
-    error,
   } = useQuery<UserResponse, Error>({
     enabled: !!username,
     queryKey: ['profile', username],
@@ -34,7 +34,7 @@ const ViewMain = () => {
   if (isError) {
     return (
       <main className="mt-10 mx-auto max-w-5xl">
-        <div>{error?.message}</div>
+        <ViewUserNotFound />
       </main>
     );
   }

@@ -1,6 +1,6 @@
 import { useIntl } from 'react-intl';
 
-const IntlMessage = ({ id }: { id: string }) => {
+const IntlMessage = ({ id, ...props }: { id: string }) => {
   const intl = useIntl();
   return intl.formatMessage({ id });
 };

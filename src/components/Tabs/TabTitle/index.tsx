@@ -1,3 +1,4 @@
+import IntlMessage from 'components/IntlMessage';
 import React from 'react';
 import { MAX_COUNT_TO_SHOW } from 'setup';
 
@@ -24,7 +25,7 @@ const TabTitle: React.FC<TabTitleProps> = ({
       <span className="opacity-50 space-x-1">
         <small>&#126;</small>
         <small>{text}</small>
-        <small>Shown</small>
+        <small>{IntlMessage({ id: 'app.main.metrics.shown' })}</small>
       </span>
     </div>
   );

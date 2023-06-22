@@ -1,9 +1,15 @@
+import IntlMessage from 'components/IntlMessage';
 import { IoOpenOutline } from 'react-icons/io5';
 import { type User } from 'types';
 
 const ViewGithubUsers = (user: User) => {
   const userTypeColor =
     user.type === 'User' ? 'text-sky-500' : 'text-amber-500';
+
+  const userType =
+    user.type === 'User'
+      ? IntlMessage({ id: 'app.main.user' })
+      : IntlMessage({ id: 'app.main.organization' });
 
   return (
     <li className="clickable">
@@ -23,7 +29,7 @@ const ViewGithubUsers = (user: User) => {
         <div className="ml-4 leading-5">
           <h4 className="font-semibold tracking-wide">{user.login}</h4>
           <span className={`${userTypeColor} text-sm font-medium`}>
-            {user.type}
+            {userType}
           </span>
         </div>
 
