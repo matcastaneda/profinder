@@ -14,6 +14,7 @@
   "app.modal.preferences-content": "Choose the theme and language of the page.",
   "app.main.search.placeholder": "Search your GitHub profile",
   "app.main.search.button": "Search",
+  "app.main.last-searches": "Last searches",
   "app.main.followers": "Followers",
   "app.main.following": "Following",
   "app.main.metrics.title-my": "My",
@@ -22,6 +23,7 @@
   "app.main.user": "User",
   "app.main.organization": "Organization",
   "app.main.metrics.shown": "Shown",
-  "app.main.metrics.view-all": "See the other {count} in GitHub",
-  "app.main.metrics.view-one": "See the other in GitHub"
+  "app.main.metrics.view-all": "See the other in GitHub",
+  "app.main.user-not-found": "Sorry, the user you are looking for does not exist.",
+  "app.main.user-not-found.description": "It is possible that the GitHub profile you are looking for is not available or has been removed."
 }

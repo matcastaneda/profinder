@@ -50,9 +50,7 @@ const ViewRepos = () => {
 
       {!hasRepos ? <ViewNoData dataType="repos" /> : null}
 
-      {hasMoreRepos ? (
-        <GithubURL url={userReposURL} count={repos.length} dataType="repo" />
-      ) : null}
+      {hasMoreRepos ? <GithubURL url={userReposURL} /> : null}
     </section>
   );
 };

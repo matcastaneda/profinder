@@ -50,9 +50,7 @@ const ViewGists = () => {
 
       {!hasGists ? <ViewNoData dataType="gists" /> : null}
 
-      {hasMoregists ? (
-        <GithubURL url={userGistsURL} count={gists.length} dataType="repo" />
-      ) : null}
+      {hasMoregists ? <GithubURL url={userGistsURL} /> : null}
     </section>
   );
 };

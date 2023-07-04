@@ -83,7 +83,7 @@ const Tabs = () => {
                     'flex w-full justify-center text-sm leading-6 font-semibold pb-2.5 border-b-2 -mb-px cursor-pointer focus-visible:outline-none',
                     selected
                       ? 'text-sky-500 border-current'
-                      : 'text-slate-900 border-transparent hover:border-slate-300 dark:text-slate-300/70 dark:hover:border-slate-700',
+                      : 'text-slate-600 border-transparent hover:border-slate-300 dark:text-slate-300/70 dark:hover:border-slate-700',
                   )
                 }>
                 {tab.name}
