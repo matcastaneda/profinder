@@ -24,9 +24,9 @@ const ViewLastSearches = () => {
             key={index}
             onClick={() => setUsername(search.username)}
             className={cn(
-              'flex space-x-3 items-center bg-white dark:bg-[#1F2A48] px-4 py-3 rounded-lg select-none cursor-pointer clickable',
+              'flex space-x-3 items-center bg-white dark:bg-[#1F2A48] px-4 py-3 rounded-lg select-none cursor-pointer clickable md:hover:outline-1 md:hover:outline-dashed md:hover:outline-sky-500',
               currentSearch?.username === search.username &&
-                'bg-sky-500 dark:bg-sky-600 text-white',
+                'bg-sky-500 dark:bg-sky-600 text-white hover:outline-none',
             )}>
             <img
               src={search.avatar}
