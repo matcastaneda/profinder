@@ -7,6 +7,7 @@ import { Gist } from 'types';
 import GistItem from './GistItem';
 import ViewNoData from 'components/ViewNoData';
 import GithubURL from 'components/GitHubURL';
+import LoadingIcon from 'components/icons/LoadingIcon';
 
 const ViewGists = () => {
   const { username, setGistsCount } = useUserStore(state => ({
@@ -14,30 +15,27 @@ const ViewGists = () => {
     setGistsCount: state.setGistsCount,
   }));
 
-  const {
-    data: gists,
-    isLoading,
-    isError,
-    error,
-  } = useQuery<Gist[], Error>({
+  const { data: gists, isLoading } = useQuery<Gist[], Error>({
     enabled: !!username,
     queryKey: ['gists', username],
     queryFn: () => fetchGists(username),
   });
 
   useEffect(() => {
-    if (gists) {
-      setGistsCount(gists.length);
-    }
+    if (gists) setGistsCount(gists.length);
   }, [gists, setGistsCount]);
 
   const userGistsURL = `https://github.com/${username}?tab=gists`;
   const hasGists = gists && gists.length > 0;
   const hasMoregists = gists && gists.length > MAX_COUNT_TO_SHOW;
 
-  if (isLoading) return <p>Loading...</p>;
-
-  if (isError) return <p>Error: {error?.message}</p>;
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center">
+        <LoadingIcon />
+      </div>
+    );
+  }
 
   return (
     <section className="space-y-5">

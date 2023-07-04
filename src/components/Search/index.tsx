@@ -1,37 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
 import clsx from 'clsx';
-import { IconType } from 'react-icons';
 import { TbSearch } from 'react-icons/tb';
 import { useUserStore } from 'store/user';
 import CustomIcon from 'components/CustomIcon';
 import IntlMessage from 'components/IntlMessage';
 
-const LoadingIcon: IconType = ({ ...props }) => (
-  <svg
-    className="animate-spin h-5 w-5 text-current"
-    xmlns="http://www.w3.org/2000/svg"
-    fill="none"
-    viewBox="0 0 24 24"
-    {...props}>
-    <circle
-      className="opacity-25"
-      cx="12"
-      cy="12"
-      r="10"
-      stroke="currentColor"
-      strokeWidth="4"></circle>
-    <path
-      className="opacity-75"
-      fill="currentColor"
-      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
-  </svg>
-);
-
 const Search = () => {
   const setUsername = useUserStore(state => state.setUsername);
   const [value, setValue] = useState<string | null>(null);
-  const [loading, setLoading] = useState<boolean>(false);
-
   const searchRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -45,7 +21,6 @@ const Search = () => {
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    setLoading(true);
     e.preventDefault();
     if (!value) return;
 
@@ -53,7 +28,6 @@ const Search = () => {
 
     setValue(null);
     e.currentTarget.reset();
-    setLoading(false);
   };
 
   return (
@@ -77,16 +51,10 @@ const Search = () => {
           type="submit"
           className={clsx(
             'bg-sky-500 md:hover:bg-sky-600 text-slate-50 font-semibold ml-3 px-5 py-3.5 rounded-xl flex items-center justify-center w-auto',
-            !value || loading
-              ? 'cursor-not-allowed opacity-50'
-              : 'active:clickable',
+            !value ? 'cursor-not-allowed opacity-50' : 'active:clickable',
           )}
-          disabled={!value || loading}>
-          {loading ? (
-            <CustomIcon icon={LoadingIcon} />
-          ) : (
-            IntlMessage({ id: 'app.main.search.button' })
-          )}
+          disabled={!value}>
+          {IntlMessage({ id: 'app.main.search.button' })}
         </button>
       </form>
     </section>

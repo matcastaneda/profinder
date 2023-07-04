@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import GithubURL from 'components/GitHubURL';
 import ViewGithubUsers from 'components/ViewGitHubUsers';
 import ViewNoData from 'components/ViewNoData';
+import LoadingIcon from 'components/icons/LoadingIcon';
 import { useEffect } from 'react';
 import { fetchFollowing } from 'services/user';
 import { MAX_COUNT_TO_SHOW } from 'setup';
@@ -14,30 +15,27 @@ const ViewFollowing = () => {
     setFollowingCount: state.setFollowingCount,
   }));
 
-  const {
-    data: following,
-    isLoading,
-    isError,
-    error,
-  } = useQuery<UserResponse[], Error>({
+  const { data: following, isLoading } = useQuery<UserResponse[], Error>({
     enabled: !!username,
     queryKey: ['following', username],
     queryFn: () => fetchFollowing(username),
   });
 
   useEffect(() => {
-    if (following) {
-      setFollowingCount(following.length);
-    }
+    if (following) setFollowingCount(following.length);
   }, [following, setFollowingCount]);
 
   const userFollowingURL = `https://github.com/${username}?tab=following`;
   const hasFollowing = following && following.length > 0;
   const hasMoreFollowing = following && following.length > MAX_COUNT_TO_SHOW;
 
-  if (isLoading) return <p>Loading...</p>;
-
-  if (isError) return <p>Error: {error?.message}</p>;
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center">
+        <LoadingIcon />
+      </div>
+    );
+  }
 
   return (
     <section className="space-y-5">

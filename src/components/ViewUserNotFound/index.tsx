@@ -1,8 +1,8 @@
 const ViewUserNotFound = () => {
   return (
-    <section>
-      <h1>Se pudo encontrar el usuario</h1>
-      <h2>Ultimas busquedas</h2>
+    <section className="">
+      <h2>Se pudo encontrar el perfil</h2>
+      <h3>Ultimas busquedas</h3>
       {/* Mostrar las ultimas busquedas */}
     </section>
   );

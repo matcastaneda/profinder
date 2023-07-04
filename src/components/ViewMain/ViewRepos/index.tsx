@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { fetchRepositories } from 'services/user';
 import { MAX_COUNT_TO_SHOW } from 'setup';
@@ -5,8 +6,8 @@ import { useUserStore } from 'store/user';
 import { type Repo, type RepoResponse } from 'types';
 import RepoItem from './RepoItem';
 import GithubURL from 'components/GitHubURL';
-import { useEffect } from 'react';
 import ViewNoData from 'components/ViewNoData';
+import LoadingIcon from 'components/icons/LoadingIcon';
 
 const ViewRepos = () => {
   const { username, setReposCount } = useUserStore(state => ({
@@ -14,30 +15,27 @@ const ViewRepos = () => {
     setReposCount: state.setReposCount,
   }));
 
-  const {
-    data: repos,
-    isLoading,
-    isError,
-    error,
-  } = useQuery<RepoResponse[], Error>({
+  const { data: repos, isLoading } = useQuery<RepoResponse[], Error>({
     enabled: !!username,
     queryKey: ['repositories', username],
     queryFn: () => fetchRepositories(username),
   });
 
   useEffect(() => {
-    if (repos) {
-      setReposCount(repos.length);
-    }
+    if (repos) setReposCount(repos.length);
   }, [repos, setReposCount]);
 
   const userReposURL = `https://github.com/${username}?tab=repositories`;
   const hasRepos = repos && repos.length > 0;
   const hasMoreRepos = repos && repos.length > MAX_COUNT_TO_SHOW;
 
-  if (isLoading) return <p>Loading...</p>;
-
-  if (isError) return <p>Error: {error?.message}</p>;
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center">
+        <LoadingIcon />
+      </div>
+    );
+  }
 
   return (
     <section className="space-y-5">

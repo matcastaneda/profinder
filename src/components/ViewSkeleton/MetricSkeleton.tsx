@@ -6,8 +6,8 @@ const MetricSkeleton = () => {
       <ul className="animate-pulse flex items-center justify-evenly">
         {metrics.map(metric => (
           <li key={metric} className="flex flex-col flex-1 text-center">
-            <small className="opacity-50">{metric}</small>
-            <div className="h-4 mx-auto w-5 rounded bg-slate-700"></div>
+            <small className="opacity-70 dark:opacity-50">{metric}</small>
+            <div className="h-4 mx-auto w-5 rounded bg-slate-200/70 dark:bg-slate-700"></div>
           </li>
         ))}
       </ul>

@@ -1,11 +1,10 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import { type Profile, type LanguageType } from 'types';
+import { type LanguageType } from 'types';
 
 interface State {
   username: string;
   locale: LanguageType;
-  profile: Profile | null;
   reposCount: number;
   gistsCount: number;
   followersCount: number;
@@ -15,7 +14,6 @@ interface State {
 interface Actions {
   setUsername: (username: string) => void;
   setLocale: (locale: LanguageType) => void;
-  setProfile: (profile: Profile) => void;
   setReposCount: (repos: number) => void;
   setGistsCount: (gists: number) => void;
   setFollowersCount: (followers: number) => void;
@@ -29,14 +27,12 @@ export const useUserStore = create<State & Actions>()(
     set => ({
       username: DEFAULT_USERNAME,
       locale: 'en',
-      profile: null,
       reposCount: 0,
       gistsCount: 0,
       followersCount: 0,
       followingCount: 0,
       setUsername: (username: string) => set({ username }),
       setLocale: (locale: LanguageType) => set({ locale }),
-      setProfile: (profile: Profile) => set({ profile }),
       setReposCount: (reposCount: number) => set({ reposCount }),
       setGistsCount: (gistsCount: number) => set({ gistsCount }),
       setFollowersCount: (followersCount: number) => set({ followersCount }),

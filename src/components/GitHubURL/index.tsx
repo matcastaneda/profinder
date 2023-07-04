@@ -1,4 +1,3 @@
-import IntlMessage from 'components/IntlMessage';
 import { FormattedMessage } from 'react-intl';
 import { MAX_COUNT_TO_SHOW } from 'setup';
 

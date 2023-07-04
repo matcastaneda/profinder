@@ -2,9 +2,9 @@ import React, { Suspense, lazy } from 'react';
 import { Tab } from '@headlessui/react';
 import Tabtitle from './TabTitle';
 import clsx from 'clsx';
-import ViewLoader from 'components/ViewLoader';
 import { useUserStore } from 'store/user';
 import IntlMessage from 'components/IntlMessage';
+import LoadingIcon from 'components/icons/LoadingIcon';
 
 const ViewRepos = lazy(() => import('../ViewMain/ViewRepos'));
 const ViewGists = lazy(() => import('../ViewMain/ViewGists'));
@@ -31,7 +31,6 @@ const Tabs = () => {
         />
       ),
       component: <ViewRepos />,
-      loader: <ViewLoader />,
     },
     {
       name: 'Gists',
@@ -43,7 +42,6 @@ const Tabs = () => {
         />
       ),
       component: <ViewGists />,
-      loader: <ViewLoader />,
     },
     {
       name: IntlMessage({ id: 'app.main.followers' }),
@@ -55,7 +53,6 @@ const Tabs = () => {
         />
       ),
       component: <ViewFollowers />,
-      loader: <ViewLoader />,
     },
     {
       name: IntlMessage({ id: 'app.main.following' }),
@@ -67,7 +64,6 @@ const Tabs = () => {
         />
       ),
       component: <ViewFollowing />,
-      loader: <ViewLoader />,
     },
   ];
 
@@ -101,7 +97,14 @@ const Tabs = () => {
         {tabList.map((tab, index) => (
           <Tab.Panel key={index} className="space-y-5">
             {tab.title}
-            <Suspense fallback={tab.loader}>{tab.component}</Suspense>
+            <Suspense
+              fallback={
+                <div className="flex items-center justify-center">
+                  <LoadingIcon />
+                </div>
+              }>
+              {tab.component}
+            </Suspense>
           </Tab.Panel>
         ))}
       </Tab.Panels>
