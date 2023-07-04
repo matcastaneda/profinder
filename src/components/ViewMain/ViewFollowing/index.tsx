@@ -51,13 +51,7 @@ const ViewFollowing = () => {
         </ul>
       )}
 
-      {hasMoreFollowing && (
-        <GithubURL
-          url={userFollowingURL}
-          count={following.length}
-          dataType="follower"
-        />
-      )}
+      {hasMoreFollowing && <GithubURL url={userFollowingURL} />}
 
       {!hasFollowing && <ViewNoData dataType="following" />}
     </section>

@@ -12,7 +12,6 @@ interface State {
 
 interface Actions {
   addSearch: (search: SearchedUser) => void;
-  removeSearch: (search: SearchedUser) => void;
 }
 
 export const useSearchesStore = create<State & Actions>()(
@@ -20,9 +19,9 @@ export const useSearchesStore = create<State & Actions>()(
     (set, get) => ({
       searches: [],
       addSearch: (search: SearchedUser) => {
-        const isAlreadySearched = get().searches.some(
-          searchedUser => searchedUser.username === search.username,
-        );
+        const isAlreadySearched = new Set(
+          get().searches.map(searchedUser => searchedUser.username),
+        ).has(search.username);
 
         if (isAlreadySearched) return;
 
@@ -33,15 +32,9 @@ export const useSearchesStore = create<State & Actions>()(
               username: search.username,
               avatar: search.avatar,
             },
-          ],
+          ].slice(-5),
         }));
       },
-      removeSearch: (search: SearchedUser) =>
-        set(state => ({
-          searches: state.searches.filter(
-            searchedUser => searchedUser.username !== search.username,
-          ),
-        })),
     }),
     { name: 'searches' },
   ),

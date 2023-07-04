@@ -44,7 +44,7 @@ const ThemeSelect = () => {
           leaveTo="transform opacity-0 scale-95">
           <Listbox.Options
             as={'div'}
-            className="absolute z-50 right-0 mt-2 w-40 origin-top-right shadow-md rounded-md bg-slate-100 dark:bg-slate-900 focus:outline-none">
+            className="absolute z-50 right-0 mt-2 w-40 origin-top-right shadow-md rounded-md bg-white dark:bg-slate-900 focus:outline-none">
             <ul className="p-2 space-y-1">
               {themeList.map(item => (
                 <ThemeItem key={item.theme} themeItem={{ ...item }} />

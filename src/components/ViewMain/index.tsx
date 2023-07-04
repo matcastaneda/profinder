@@ -25,14 +25,19 @@ const ViewMain = () => {
     queryFn: () => fetchProfile(username),
   });
 
+  const userTitle = `${profile?.name || profile?.login} (@${
+    profile?.login
+  }) | Profinder`;
+
   useEffect(() => {
     if (profile) {
       addSearch({
         username: profile.login,
         avatar: profile.avatar_url,
       });
+      document.title = userTitle;
     }
-  }, [profile, addSearch]);
+  }, [addSearch, profile, userTitle]);
 
   if (isLoading) {
     return (
@@ -44,7 +49,7 @@ const ViewMain = () => {
 
   if (isError) {
     return (
-      <main className="mt-10 mx-auto max-w-5xl">
+      <main className="mt-16 mx-auto max-w-5xl">
         <ViewUserNotFound />
       </main>
     );

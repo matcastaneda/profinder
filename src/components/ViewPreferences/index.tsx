@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { AiTwotoneSetting } from 'react-icons/ai';
+import { HiDotsVertical } from 'react-icons/hi';
 import { useWindowSize } from 'hooks/useWindowSize';
 import CustomIcon from 'components/CustomIcon';
 import PreferencesModal from 'components/PreferencesModal';
@@ -21,7 +21,7 @@ const ViewPrefences = () => {
             <LanguageSelect />
           </>
         ) : (
-          <CustomIcon icon={AiTwotoneSetting} onClick={toggleModal} />
+          <CustomIcon icon={HiDotsVertical} onClick={toggleModal} />
         )}
       </div>
 
