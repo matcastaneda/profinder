@@ -1,4 +1,4 @@
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { fetchProfile } from 'services/user';
 import { useUserStore } from 'store/user';
@@ -7,11 +7,13 @@ import ProfileSkeleton from 'components/ViewSkeleton/ProfileSkeleton';
 import Tabs from 'components/Tabs';
 import ViewUserNotFound from 'components/ViewUserNotFound';
 import LoadingIcon from 'components/icons/LoadingIcon';
+import { useSearchesStore } from 'store/searches';
 
 const ViewProfile = lazy(() => import('./ViewProfile'));
 
 const ViewMain = () => {
   const username = useUserStore(state => state.username);
+  const addSearch = useSearchesStore(state => state.addSearch);
 
   const {
     data: profile,
@@ -22,6 +24,15 @@ const ViewMain = () => {
     queryKey: ['profile', username],
     queryFn: () => fetchProfile(username),
   });
+
+  useEffect(() => {
+    if (profile) {
+      addSearch({
+        username: profile.login,
+        avatar: profile.avatar_url,
+      });
+    }
+  }, [profile, addSearch]);
 
   if (isLoading) {
     return (
