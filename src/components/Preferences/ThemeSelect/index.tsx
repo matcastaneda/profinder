@@ -1,13 +1,33 @@
 import React from 'react';
 import { Listbox, Transition } from '@headlessui/react';
-import { useTheme } from 'hooks/useTheme';
+import { HiMoon, HiSun } from 'react-icons/hi';
+import { MdMonitor } from 'react-icons/md';
 import ThemeButton from './ThemeButton';
 import ThemeItem from './ThemeItem';
-import { themeList } from 'utils/lists/themeList';
-import { type ThemeType } from 'types';
+import IntlMessage from 'components/IntlMessage';
+import { ThemeItemInterface, type ThemeType } from 'types';
+import { useThemeContext } from 'providers/theme/themeContext';
 
-const Theme = () => {
-  const [theme, setTheme] = useTheme();
+const ThemeSelect = () => {
+  const { theme, setTheme } = useThemeContext();
+
+  const themeList: ThemeItemInterface[] = [
+    {
+      label: IntlMessage({ id: 'app.header.theme.light' }),
+      icon: <HiSun className="w-5 h-5" />,
+      theme: 'light',
+    },
+    {
+      label: IntlMessage({ id: 'app.header.theme.dark' }),
+      icon: <HiMoon className="w-5 h-5" />,
+      theme: 'dark',
+    },
+    {
+      label: IntlMessage({ id: 'app.header.theme.system' }),
+      icon: <MdMonitor className="w-5 h-5" />,
+      theme: 'system',
+    },
+  ];
 
   return (
     <section className="relative inline-block text-left select-none">
@@ -24,7 +44,7 @@ const Theme = () => {
           leaveTo="transform opacity-0 scale-95">
           <Listbox.Options
             as={'div'}
-            className="absolute z-50 right-0 mt-2 w-40 origin-top-right shadow-md rounded-md bg-slate-100 dark:bg-slate-900 focus:outline-none">
+            className="absolute z-50 right-0 mt-2 w-40 origin-top-right shadow-md rounded-md bg-white dark:bg-slate-900 focus:outline-none">
             <ul className="p-2 space-y-1">
               {themeList.map(item => (
                 <ThemeItem key={item.theme} themeItem={{ ...item }} />
@@ -37,4 +57,4 @@ const Theme = () => {
   );
 };
 
-export default Theme;
+export default ThemeSelect;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { IconType } from 'react-icons';
 
-interface IconProps {
+type IconProps = {
   icon: IconType;
   size?: number;
   color?: string;
@@ -11,9 +11,9 @@ interface IconProps {
   children?: React.ReactNode;
   anchorLink?: boolean;
   anchorLinkHref?: string;
-}
+};
 
-const Icon: React.FC<IconProps> = ({
+const CustomIcon: React.FC<IconProps> = ({
   icon: IconComponent,
   size = 24,
   color = 'currentColor',
@@ -22,7 +22,7 @@ const Icon: React.FC<IconProps> = ({
   onClick,
   children,
   anchorLink = false,
-  anchorLinkHref = '',
+  anchorLinkHref = '#',
 }) => {
   const containerProps = {
     className: `inline-flex items-center justify-center select-none ${className}`,
@@ -54,4 +54,4 @@ const Icon: React.FC<IconProps> = ({
   );
 };
 
-export default Icon;
+export default CustomIcon;

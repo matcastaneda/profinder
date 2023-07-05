@@ -1,5 +1,9 @@
 @tailwind base;
 
+/* * {
+  @apply scrollbar-thin scrollbar-thumb-sky-500 scrollbar-track-gray-100  dark:scrollbar-thumb-sky-700 dark:scrollbar-track-gray-800;
+} */
+
 *,
 *::before,
 *::after {
@@ -15,6 +19,19 @@ html {
   box-sizing: border-box;
   touch-action: manipulation;
   font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-sky-500) var(--color-slate-50);
+}
+::-webkit-scrollbar {
+  width: 12px;
+}
+::-webkit-scrollbar-track {
+  background: #0a192f;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #495670;
+  border: 3px solid #0a192f;
+  border-radius: 10px;
 }
 
 html,
