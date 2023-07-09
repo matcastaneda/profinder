@@ -2,6 +2,26 @@
   "name": "profinder",
   "private": true,
   "version": "1.0.0",
+  "description": "Find your or your friends' GitHub profile with Profinder",
+  "author": {
+    "name": "Matías Castañeda (@matcastaneda)",
+    "email": "matiascmondaca@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/matcastaneda/profinder.git"
+  },
+  "keywords": [
+    "react",
+    "github",
+    "vite",
+    "github profile"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=16.0.0",
+    "yarn": ">=1.22.0"
+  },
   "type": "module",
   "scripts": {
     "dev": "vite --host 0.0.0.0",
