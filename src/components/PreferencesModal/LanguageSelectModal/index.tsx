@@ -7,6 +7,8 @@ import { toast } from 'sonner';
 import CustomIcon from 'components/CustomIcon';
 import { BsFillPatchCheckFill } from 'react-icons/bs';
 import { FormattedMessage } from 'react-intl';
+import EnglishFlagIcon from 'components/icons/EnglishFlagIcon';
+import SpanishFlagIcon from 'components/icons/SpanishFlagIcon';
 
 const LanguageSelectModal = () => {
   const locale = useUserStore(state => state.locale);
@@ -16,12 +18,12 @@ const LanguageSelectModal = () => {
     {
       name: IntlMessage({ id: 'app.header.lang.en' }),
       code: 'en',
-      image: '/us.svg',
+      icon: EnglishFlagIcon,
     },
     {
       name: IntlMessage({ id: 'app.header.lang.es' }),
       code: 'es',
-      image: '/es.svg',
+      icon: SpanishFlagIcon,
     },
   ];
 
@@ -65,7 +67,7 @@ const LanguageSelectModal = () => {
                     : 'md:hover:bg-slate-200 dark:md:hover:bg-slate-950/50 border border-sky-500/50',
                 )
               }>
-              <img src={item.image} alt={item.name} className="w-7" />
+              <CustomIcon icon={item.icon} className="w-7" />
             </RadioGroup.Option>
           ))}
         </ul>

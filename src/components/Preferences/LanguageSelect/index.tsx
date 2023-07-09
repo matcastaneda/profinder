@@ -9,6 +9,9 @@ import { useUserStore } from 'store/user';
 import IntlMessage from 'components/IntlMessage';
 import CustomIcon from 'components/CustomIcon';
 import { type LanguageList, type LanguageType } from 'types';
+import EnglishFlagIcon from 'components/icons/EnglishFlagIcon';
+import SpanishFlagIcon from 'components/icons/SpanishFlagIcon';
+import { IconType } from 'react-icons';
 
 const LanguageSelect = () => {
   const locale = useUserStore(state => state.locale);
@@ -18,12 +21,12 @@ const LanguageSelect = () => {
     {
       name: IntlMessage({ id: 'app.header.lang.en' }),
       code: 'en',
-      image: '/us.svg',
+      icon: EnglishFlagIcon,
     },
     {
       name: IntlMessage({ id: 'app.header.lang.es' }),
       code: 'es',
-      image: '/es.svg',
+      icon: SpanishFlagIcon,
     },
   ];
 
@@ -54,11 +57,18 @@ const LanguageSelect = () => {
         onChange={value => setLanguage(value.code)}>
         <Listbox.Button className="flex items-center space-x-2">
           <div className="inline-flex items-center w-full justify-center rounded-md text-xs md:text-sm font-medium focus:outline-none">
-            <img
+            <CustomIcon
+              icon={
+                languages.find(lang => lang.code === locale)?.icon as IconType
+              }
+              size={18}
+              className="w-6"
+            />
+            {/* <img
               src={languages.find(lang => lang.code === locale)?.image}
               alt={languages.find(lang => lang.code === locale)?.name}
               className="w-6"
-            />
+            /> */}
           </div>
         </Listbox.Button>
 
@@ -89,7 +99,12 @@ const LanguageSelect = () => {
                           : 'md:hover:bg-slate-200 dark:md:hover:bg-slate-950/50',
                       )}>
                       <div className="flex items-center space-x-2">
-                        <img src={lang.image} alt={lang.name} className="w-5" />
+                        <CustomIcon
+                          icon={lang.icon}
+                          size={18}
+                          className="w-5"
+                        />
+                        {/* <img src={lang.image} alt={lang.name} className="w-5" /> */}
                         <span>{lang.name}</span>
                       </div>
 

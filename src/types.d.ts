@@ -1,3 +1,5 @@
+import { IconType } from 'react-icons';
+
 export type ThemeType = 'light' | 'dark' | 'system';
 
 export interface ThemeItemInterface {
@@ -11,7 +13,7 @@ export type LanguageType = 'en' | 'es';
 export interface LanguageList {
   name: string;
   code: LanguageType;
-  image: string;
+  icon: IconType;
 }
 
 export type Profile = Pick<
