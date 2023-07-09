@@ -1,4 +1,4 @@
-export const GITHUB_API_URL = import.meta.env.VITE_GITHUB_API_URL;
+export const GITHUB_API_URL = 'https://api.github.com';
 export const GITHUB_API_KEY = import.meta.env.VITE_GITHUB_API_KEY;
 
 export const HEADERS = Object.freeze({
